@@ -1,0 +1,275 @@
+<!doctype html>
+<html lang="kk"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Дала батырлары — көтерілістер картасы</title>
+<link href="https://fonts.googleapis.com/css2?family=Alegreya:wght@500;700;900&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#d9f0ff;--ink:#1f2a5a;--card:#fff;--sub:#4a5580;--line:#1f2a5a;--land:#8fdc8f;--sea:#7cc8ff;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media(prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#141b3f;--ink:#f3f5ff;--card:#222c63;--sub:#b9c2ee;--line:#f3f5ff;--land:#3f9a5c;--sea:#2a4f9a}}
+:root[data-theme="dark"]{--bg:#141b3f;--ink:#f3f5ff;--card:#222c63;--sub:#b9c2ee;--line:#f3f5ff;--land:#3f9a5c;--sea:#2a4f9a}
+*{box-sizing:border-box}
+html,body{margin:0}
+body{background:var(--bg);color:var(--ink);font-family:'Nunito','Segoe UI',system-ui,sans-serif;font-weight:600;line-height:1.5;overflow-x:hidden}
+h1,h2,h3{font-weight:900;line-height:1.1;margin:0}
+.wrap{max-width:1040px;margin:0 auto;padding:0 16px}
+.hero{display:flex;align-items:center;gap:20px;padding:36px 0 18px;flex-wrap:wrap;justify-content:center}
+.hero h1{font-size:clamp(36px,9vw,68px);letter-spacing:-1px;text-shadow:0 4px 0 #ffc93c}
+.hero p{font-size:18px;color:var(--sub);max-width:460px;margin:12px 0 18px}
+.btn{font:inherit;font-weight:900;font-size:17px;color:#1f2a5a;background:#ffc93c;border:3px solid var(--line);border-radius:999px;padding:10px 22px;box-shadow:0 5px 0 var(--line);cursor:pointer;text-decoration:none;display:inline-block;transition:transform .1s,box-shadow .1s}
+.btn:active{transform:translateY(4px);box-shadow:0 1px 0 var(--line)}
+.btn:focus-visible,.chip:focus-visible,.opt:focus-visible{outline:4px solid #8a6bff;outline-offset:3px}
+.mascot{width:230px;max-width:60vw;position:relative}
+.mascot svg{width:100%;display:block;animation:bob 2.4s ease-in-out infinite;overflow:visible}
+@keyframes bob{50%{transform:translateY(-10px) rotate(1.5deg)}}
+.eyes{transform-origin:100px 70px;animation:blink 4s infinite}
+@keyframes blink{0%,94%,100%{transform:scaleY(1)}97%{transform:scaleY(.1)}}
+.s{stroke:var(--line);stroke-width:4;stroke-linejoin:round}
+.say{position:absolute;left:50%;top:-22px;transform:translateX(-30%);background:#fff;color:#1f2a5a;border:3px solid var(--line);border-radius:18px;padding:6px 12px;font-weight:800;font-size:14px;width:max-content;max-width:230px;text-align:center;z-index:2}
+.say:after{content:"";position:absolute;bottom:-11px;left:30%;border:9px solid transparent;border-top-color:var(--line);border-bottom:0}
+h2.sec{font-size:clamp(26px,5vw,38px);margin:42px 0 6px}
+.lead{color:var(--sub);margin:0 0 16px}
+.chips{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:16px}
+.chip{font:inherit;font-weight:800;font-size:15px;color:#1f2a5a;background:#fff;border:3px solid var(--line);border-radius:999px;padding:7px 14px;cursor:pointer;box-shadow:0 4px 0 var(--line);transition:transform .1s}
+.chip.on{background:var(--c);transform:translateY(2px);box-shadow:0 2px 0 var(--line)}
+.grid{display:grid;grid-template-columns:1.25fr 1fr;gap:18px}
+@media(max-width:820px){.grid{grid-template-columns:1fr}}
+.box{background:var(--card);border:3px solid var(--line);border-radius:24px;box-shadow:0 6px 0 var(--line);padding:16px}
+.mapbox{padding:8px;background:var(--sea)}
+.mapbox svg{width:100%;height:auto;display:block}
+.land{fill:var(--land);stroke:var(--line);stroke-width:3;stroke-linejoin:round}
+.m{cursor:pointer;transition:opacity .2s}
+.m.dim{opacity:.4}
+.m .c{stroke:#1f2a5a;stroke-width:3;transform-box:fill-box;transform-origin:center}
+.m.on .c{animation:pu 1.1s ease-in-out infinite}
+@keyframes pu{50%{transform:scale(1.35)}}
+.m text{font-size:13px;font-weight:900;fill:#1f2a5a;stroke:#fff;stroke-width:4px;paint-order:stroke;pointer-events:none}
+.route{fill:none;stroke:#1f2a5a;stroke-width:2.5;stroke-dasharray:6 6;opacity:0}
+.route.on{opacity:.8}
+.info h3{font-size:26px;margin:4px 0 8px}
+.badge{display:inline-block;background:var(--c);color:#1f2a5a;font-weight:900;border:3px solid var(--line);border-radius:999px;padding:2px 12px;font-size:14px}
+.info ul{padding-left:20px;margin:10px 0}
+.info li{margin:6px 0}
+.fun{background:#fff3c4;color:#1f2a5a;border:3px dashed #1f2a5a;border-radius:16px;padding:10px 12px;font-weight:800;margin-top:12px}
+.places{font-size:14px;color:var(--sub);margin-top:10px}
+.pop{animation:pop .35s}
+@keyframes pop{from{transform:scale(.96);opacity:.3}}
+.quiz{max-width:720px;margin:0 auto}
+.bar{height:16px;background:var(--bg);border:3px solid var(--line);border-radius:999px;overflow:hidden;margin-bottom:14px}
+.bar i{display:block;height:100%;width:0;background:#4fbf7a;transition:width .4s}
+.qt{font-size:clamp(20px,4vw,26px);font-weight:900;margin:0 0 14px}
+.opt{display:block;width:100%;text-align:left;font:inherit;font-weight:800;font-size:17px;color:#1f2a5a;background:#fff;border:3px solid var(--line);border-radius:16px;padding:11px 14px;margin:9px 0;cursor:pointer;box-shadow:0 4px 0 var(--line)}
+.opt:disabled{cursor:default}
+.opt.ok{background:#7be495;animation:pop .35s}
+.opt.no{background:#ff9a9a;animation:shake .35s}
+@keyframes shake{25%{transform:translateX(-6px)}75%{transform:translateX(6px)}}
+.fb{min-height:48px;font-weight:800;margin:8px 0}
+.res{text-align:center}
+.res .big{font-size:64px}
+.cf{position:fixed;top:-30px;font-size:26px;pointer-events:none;z-index:9;animation:fall 2.6s linear forwards}
+@keyframes fall{to{transform:translateY(110vh) rotate(540deg)}}
+footer{text-align:center;color:var(--sub);padding:34px 0 24px;font-size:14px}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+:root{--bg:#ecd9a8;--card:#fbf3dc;--ink:#3a2212;--line:#3a2212;--sub:#6b4a2f;--land:#b5c97f;--sea:#8fc3cf}
+@media(prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#2a1a0f;--card:#3b2716;--ink:#f6e7c1;--line:#d9b36a;--sub:#d8c398;--land:#5d7f45;--sea:#27506a}}
+:root[data-theme="dark"]{--bg:#2a1a0f;--card:#3b2716;--ink:#f6e7c1;--line:#d9b36a;--sub:#d8c398;--land:#5d7f45;--sea:#27506a}
+body{font-family:'Alegreya',Georgia,serif;font-size:19px;background:radial-gradient(ellipse at center,transparent 55%,#0003 100%),var(--bg)}
+.orn{height:24px;margin-top:14px;border:3px solid var(--line);background:linear-gradient(135deg,#a3262a 25%,transparent 25%) -12px 0/24px 24px,linear-gradient(225deg,#a3262a 25%,transparent 25%) -12px 0/24px 24px,linear-gradient(315deg,#1d5c8a 25%,transparent 25%) 0 0/24px 24px,linear-gradient(45deg,#1d5c8a 25%,transparent 25%) 0 0/24px 24px,#e0b24a}
+.box{border-style:double;border-width:6px}
+.chip,.opt,.say{background:#fbf3dc}.btn{background:#d9a441}
+.nv{display:flex;gap:8px;flex-wrap:wrap;justify-content:center;margin:10px 0}
+.pg{display:none}.pg.on{display:block}
+.kg{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:16px}
+.kc{cursor:pointer;text-align:center;font:inherit;color:inherit;width:100%}
+.kc .pt{font-size:54px}.kc h3{font-size:22px}.kc p{display:none;text-align:left;margin:8px 0 0}.kc.f p{display:block}
+.cm{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:12px;background:#3a2212;padding:12px}
+.pn{position:relative;border:4px solid #3a2212;min-height:260px;padding:12px;display:flex;flex-direction:column;justify-content:space-between;gap:10px;color:#3a2212;background:radial-gradient(#0002 18%,transparent 20%) 0 0/10px 10px,var(--b)}
+.pn .e{font-size:64px;text-align:center}
+.bb{background:#fff;border:3px solid #3a2212;border-radius:50%/40%;padding:10px 16px;font-weight:900;text-align:center;font-size:18px}
+.cp{background:#ffd34d;border:3px solid #3a2212;padding:4px 8px;font-weight:800;font-size:15px;align-self:flex-start}
+.sx{position:static;align-self:flex-end;background:#e63946;color:#fff;font-weight:900;transform:rotate(8deg);padding:2px 10px;border:3px solid #3a2212;font-size:20px}
+.yr{font:inherit;font-weight:800;border:3px solid var(--line);border-radius:12px;padding:6px 10px;width:110px;background:#fff;color:#3a2212}
+</style></head>
+<body>
+<div class="wrap">
+<div class="orn"></div><header class="hero">
+ <div class="mascot" aria-hidden="true">
+  <div class="say" id="say">Сәлем! Мен — Киіз үй! 🏕️</div>
+  <svg viewBox="0 0 200 180" style="margin-top:36px">
+   <ellipse cx="100" cy="168" rx="82" ry="9" fill="#0003"/>
+   <rect class="s" x="28" y="100" width="144" height="64" rx="8" fill="#ff9f43"/>
+   <path class="s" d="M18 102Q100-22 182 102Z" fill="#ffc93c"/>
+   <circle class="s" cx="100" cy="22" r="8" fill="#fff"/>
+   <path class="s" d="M80 164V138Q100 116 120 138V164Z" fill="#7a4a2b"/>
+   <g class="eyes"><circle class="s" cx="76" cy="68" r="12" fill="#fff"/><circle class="s" cx="124" cy="68" r="12" fill="#fff"/><circle cx="79" cy="70" r="5" fill="#1f2a5a"/><circle cx="121" cy="70" r="5" fill="#1f2a5a"/></g>
+   <path d="M86 90Q100 106 114 90" fill="none" stroke="#1f2a5a" stroke-width="4" stroke-linecap="round"/>
+   <circle cx="62" cy="88" r="7" fill="#ff8fa3"/><circle cx="138" cy="88" r="7" fill="#ff8fa3"/>
+  </svg>
+ </div>
+ <div>
+  <h1>Дала батырлары</h1>
+  <p>Көтерілістердің картасын аралап, батырлармен танысып, тестте білімінді тексер!</p>
+  <button class="btn" onclick="go(0)">🗺️ Картаға бару</button> <button class="btn" onclick="go(3)" style="background:#9bcf7a">🎮 Тест</button>
+ </div>
+</header>
+
+<nav class="nv" id="nv"></nav><div class="pg on" id="pg0"><h2 class="sec" id="map">Көтерілістер картасы</h2>
+<p class="lead">Тақырыпты таңда немесе картадағы нүктені бас.</p>
+<div class="chips" id="chips"></div>
+<div class="grid">
+ <div class="box mapbox"><svg viewBox="0 0 800 440" id="svg" role="img" aria-label="Қазақстан картасы"></svg></div>
+ <div class="box info" id="info"></div>
+</div>
+
+</div><div class="pg" id="pg1"><h2 class="sec">Хандар галереясы</h2><p class="lead">Карточканы бассаң, ақпарат ашылады.</p><div class="kg" id="kg"></div></div><div class="pg" id="pg2"><h2 class="sec">Тарих комиксі</h2><p class="lead">Тақырыпты таңдап, оқиғаны кадр-кадр оқы.</p><div class="cm" id="cm"></div></div><div class="pg" id="pg3"><h2 class="sec" id="quiz">Тарих сынағы</h2>
+<p class="lead">50 сұрақ және 8 ашық тапсырма. Дұрыс жауап берсең, Киіз үй қуанады!</p>
+<div class="box quiz" id="qz"></div><div class="box quiz" id="op" style="margin-top:22px"></div></div>
+<footer>Қазақстан тарихы — Аманқос Жібек</footer>
+</div>
+
+<script>
+var T=[
+{t:"Сырым Датұлы",y:"1783–1797",c:"#ff6b6b",em:"🐎",
+ intro:"Сырым Датұлы — Кіші жүздің атақты батыры, биі және халық көтерілісінің басшысы.",
+ pts:["Себебі: Нұралы хан мен Ресей әкімшілігінің қысымы, Жайық бойындағы жайылымдардың тартып алынуы.","Көтеріліс Жайық пен Жем өзендерінің аралығында өрбіді.","Ханның билігін шектеу үшін Билер кеңесін құруға тырысты.","1797 жылдан кейін Хиуа жағына өтіп, 1802 жылы қайтыс болды."],
+ fun:"Сырым қылышпен ғана емес, елшілік пен келіссөздің де шебері болған.",
+ pl:[["Жем–Жайық",52.5,49.3]]},
+{t:"1822–1824 жылдардағы реформалар",y:"1822–1824",c:"#ff9f43",em:"📜",
+ intro:"Ресей Сібір және Орынбор қазақтарын басқару туралы жарғылар енгізіп, хандық биліктің орнына өз әкімшілігін орнатты.",
+ pts:["1822 ж. — Сібір қазақтары туралы жарғы (М. Сперанский): Орта жүзде хандық жойылып, жер сыртқы округтерге бөлінді, орталығы — Омбы.","1824 ж. — Орынбор қазақтары туралы жарғы: Кіші жүз Батыс, Орта, Шығыс үш бөлікке бөлінді.","Нәтижесі: хан билігі жойылып, басқару империя қолына көшті, халықтың наразылығы өсті."],
+ fun:"Орта жүзде хандық 1822, Кіші жүзде 1824 жылы жойылды.",
+ pl:[["Омбы",73.4,54.9],["Орынбор",55.1,51.8]]},
+{t:"Бөкей ордасындағы көтеріліс",y:"1836–1838",c:"#b39dff",em:"🔥",
+ intro:"Исатай Тайманұлы мен Махамбет Өтемісұлы бастаған көтеріліс Жайық пен Еділ аралығындағы Бөкей ордасында болды.",
+ pts:["Себебі: Жәңгір хан кезінде жерлердің ақсүйектер мен орыс шенеуніктеріне бөлініп берілуі, халықтың жерсіз қалуы.","Исатай — халық батыры, Махамбет — ақын әрі қолбасшы; өлеңдері күрес рухын көтерді.","1837 ж. көтерілісшілер хан ордасына қарсы жорық жасады.","1838 ж. 12 шілдеде Ақбұлақ шайқасында Исатай қаза тапты. Махамбет күресін 1846 жылға дейін жалғастырды."],
+ fun:"Махамбет — қолына қылыш та, домбыра да ұстаған батыр-ақын.",
+ pl:[["Бөкей ордасы",47.9,48.9]]},
+{t:"Кенесары Қасымұлы көтерілісі",y:"1837–1847",c:"#4fbf7a",em:"🏹",
+ intro:"Абылай ханның немересі Кенесары Қасымұлы бастаған көтеріліс — қазақ тарихындағы ең ірі ұлт-азаттық қозғалыс.",
+ pts:["Мақсаты: Ресей бекіністерінің өсуін тоқтатып, қазақ жерін қорғау.","1838 ж. Ақмола бекінісіне шабуыл жасалды.","Көтеріліс Торғай, Ұлытау, Көкшетау және Жетісу бағытына өрістеді.","1841 ж. Кенесары хан болып сайланды.","1847 ж. қырғыз жерінде қаза тапты."],
+ fun:"Күрес 10 жылдан астам созылды — ең ұзақ қарсылықтардың бірі.",
+ pl:[["Ақмола",71.4,51.2],["Торғай",63.6,49.6],["Ұлытау",67,48.3],["Жетісу",77.5,44.8]]},
+{t:"Қазақстанды қосып алудың аяқталуы",y:"XIX ғ. 60–70 жж.",c:"#5bc0ff",em:"🗺️",
+ intro:"XVIII ғасырда басталған қосылу процесі оңтүстіктегі бекіністер арқылы аяқталды.",
+ pts:["1854 ж. Верный бекінісі (қазіргі Алматы) салынды.","1864–1865 жж. Шымкент, Әулиеата және Ташкент алынды.","1867–1868 жж. «Уақытша ережелер» бойынша өлке облыстарға бөлінді.","Маңғыстау өңірі де 1870 жылдары империя құрамына енді."],
+ fun:"Қосылу бір күнде емес, бір жарым ғасырға жуық уақытта жүрді.",
+ pl:[["Верный",76.9,43.3],["Шымкент",69.6,42.3],["Маңғыстау",51.2,43.7]]}];
+var OUT="46.5,48.2 48,50.3 50.5,51.6 52,51.7 55,50.6 57,51.2 61,50.8 61.5,53.2 64,54.2 68,55.3 70,55.2 73,54.1 76,54.2 79,52.2 81,50.8 83.3,51.2 85.5,49.6 87.3,49.1 86,47.5 83,47 82.5,45.2 80,42.8 77,43.1 74,42.9 71,42.7 70,41.1 67,42.8 64,43.5 61,44.3 58,45.5 56,45 55,41.7 53.5,42 52.8,41.3 51.2,44.5 50,45.5 49,46.5 47,45.8 46.8,47";
+function P(x,y){return[(x-45.5)*18.5,(56-y)*28]}
+var svg=document.getElementById("svg"),h='<polygon class="land" points="'+OUT.split(" ").map(function(p){var a=p.split(",");return P(+a[0],+a[1]).join(",")}).join(" ")+'"/><text x="40" y="330" font-size="14" font-weight="800" fill="#1f2a5a" opacity=".6">Каспий</text>';
+T.forEach(function(d,i){
+ var pts=d.pl.map(function(p){return P(p[1],p[2])});
+ if(pts.length>1)h+='<polyline class="route" id="r'+i+'" points="'+pts.join(" ")+'"/>';
+});
+T.forEach(function(d,i){d.pl.forEach(function(p){var q=P(p[1],p[2]);
+ h+='<g class="m" data-i="'+i+'" tabindex="0"><circle class="c" cx="'+q[0]+'" cy="'+q[1]+'" r="11" fill="'+d.c+'"/><text x="'+(q[0]+15)+'" y="'+(q[1]+5)+'">'+p[0]+'</text></g>'})});
+svg.innerHTML=h;
+var chips=document.getElementById("chips"),info=document.getElementById("info"),say=document.getElementById("say");
+var short=["Сырым Датұлы","1822–24 реформасы","Бөкей ордасы","Кенесары","Қосылудың аяқталуы"];
+T.forEach(function(d,i){var b=document.createElement("button");b.className="chip";b.style.setProperty("--c",d.c);b.textContent=d.em+" "+short[i];b.onclick=function(){sel(i,1)};chips.appendChild(b)});
+var hints=["Сырым — Кіші жүздің батыры!","Хандық билік осылай жойылды.","Исатай мен Махамбетті біл!","Кенесары — соңғы хан!","Қосылу осылай аяқталды."];
+function sel(i,s){
+ var d=T[i];
+ [].forEach.call(chips.children,function(c,j){c.classList.toggle("on",j==i)});
+ [].forEach.call(svg.querySelectorAll(".m"),function(m){var o=m.dataset.i==i;m.classList.toggle("on",o);m.classList.toggle("dim",!o)});
+ [].forEach.call(svg.querySelectorAll(".route"),function(r){r.classList.toggle("on",r.id=="r"+i)});
+ info.style.setProperty("--c",d.c);
+ info.innerHTML='<div class="pop"><span class="badge">'+d.em+' '+d.y+'</span><h3>'+d.t+'</h3><p>'+d.intro+'</p><ul>'+d.pts.map(function(x){return"<li>"+x+"</li>"}).join("")+'</ul><div class="fun">💡 Білесің бе? '+d.fun+'</div><div class="places">📍 Картада: '+d.pl.map(function(p){return p[0]}).join(", ")+'</div></div>';
+ say.textContent=hints[i];
+}
+svg.addEventListener("click",function(e){var g=e.target.closest(".m");if(g)sel(+g.dataset.i)});
+svg.addEventListener("keydown",function(e){var g=e.target.closest&&e.target.closest(".m");if(g&&(e.key=="Enter"||e.key==" ")){e.preventDefault();sel(+g.dataset.i)}});
+sel(0);
+
+var Q0=[
+["Сырым Датұлы көтерілісі қай жылдары болды?","1783–1797","1836–1838","1837–1847","1822–1824"],
+["Сырым Датұлы қай жүздің өкілі?","Кіші жүз","Орта жүз","Ұлы жүз","Бөкей ордасы"],
+["Сібір қазақтары туралы жарғы қай жылы қабылданды?","1822","1824","1838","1854"],
+["1824 жылғы жарғы бойынша Кіші жүз неше бөлікке бөлінді?","3","2","5","7"],
+["1822–1824 жылдардағы реформалар нені жойды?","Хандық билікті","Билер сотын","Жайылымдарды","Руларды"],
+["Бөкей ордасындағы көтеріліс жетекшілері кімдер?","Исатай мен Махамбет","Сырым мен Кенесары","Абылай мен Тәуке","Наурызбай мен Сырым"],
+["Исатай қай шайқаста қаза тапты?","Ақбұлақ шайқасы","Ақмола шабуылы","Ұлытау шайқасы","Торғай шайқасы"],
+["Кенесары Қасымұлы кімнің немересі?","Абылай ханның","Тәуке ханның","Жәңгір ханның","Нұралы ханның"],
+["Кенесары көтерілісі қай жылдары болды?","1837–1847","1783–1797","1836–1838","1822–1824"],
+["Қазақстанды қосып алу қашан аяқталды?","XIX ғ. 60–70 жылдары","XVII ғасырда","XVIII ғасыр басында","XX ғасыр басында"]];
+var NW=[
+["Сырым қай өзендер аралығында көтеріліс басқарды?","Жайық пен Жем","Сыр мен Шу","Ертіс пен Есіл","Еділ мен Дон"],
+["Сырым Датұлы қай рудан шыққан?","Шекті","Қыпшақ","Найман","Дулат"],
+["Сырым көтерілісі кезіндегі Кіші жүз ханы кім?","Нұралы","Жәңгір","Абылай","Кенесары"],
+["Сырым Датұлы қай жылы қайтыс болды?","1802","1797","1838","1847"],
+["Сырым Датұлы кім болған?","Батыр әрі би","Тек ақын","Сұлтан-билеуші","Орыс офицері"],
+["Сібір қазақтары туралы жарғыны кім әзірледі?","М. Сперанский","Н. Муравьев","А. Перовский","М. Скобелев"],
+["1822 жылғы жарғы бойынша әкімшілік орталық қай қала?","Омбы","Орынбор","Верный","Қазан"],
+["Орынбор қазақтары туралы жарғы қай жылы қабылданды?","1824","1822","1836","1847"],
+["1822 жылы қай жүзде хандық жойылды?","Орта жүз","Кіші жүз","Ұлы жүз","Бөкей ордасы"],
+["1824 жылы қай жүзде хандық жойылды?","Кіші жүз","Орта жүз","Ұлы жүз","Жетісу"],
+["Жарғылардың басты салдары қандай?","Хан билігінің жойылуы","Хандықтың күшеюі","Жүздердің бірігуі","Салықтың алынуы"],
+["Кіші жүздің соңғы ханы кім?","Шерғазы","Нұралы","Жәңгір","Әбілқайыр"],
+["Орта жүздің соңғы ханы кім?","Уәли","Абылай","Кенесары","Шерғазы"],
+["Бөкей ордасы қай өзендер аралығында орналасты?","Жайық пен Еділ","Сыр мен Аму","Ертіс пен Тобыл","Балқаш пен Алакөл"],
+["Бөкей ордасының ханы кім?","Жәңгір","Нұралы","Абылай","Уәли"],
+["Бөкей ордасындағы көтерілістің басты себебі?","Жерден айырылу","Сауданың тоқтауы","Дін мәселесі","Су тапшылығы"],
+["Махамбет Өтемісұлы кім?","Ақын әрі қолбасшы","Хан","Орыс генерал","Ғалым"],
+["Исатай Тайманұлы қай жылы қаза тапты?","1838","1837","1846","1847"],
+["Ақбұлақ шайқасы қай айда болды?","Шілде","Мамыр","Қазан","Қаңтар"],
+["Махамбет қай жылы қаза тапты?","1846","1838","1841","1847"],
+["Бөкей ордасындағы көтеріліс қай жылдары болды?","1836–1838","1783–1797","1837–1847","1822–1824"],
+["Кенесары көтерілісінің мақсаты қандай?","Бекіністердің таралуын тоқтату","Сауданы дамыту","Қала салу","Хиуамен одақ құру"],
+["Кенесарының әкесі кім?","Қасым","Абылай","Уәли","Сырым"],
+["Кенесары қай жылы хан болып сайланды?","1841","1837","1847","1824"],
+["1838 жылы Кенесары қай бекіністі өртеді?","Ақмола","Орск","Верный","Омбы"],
+["Кенесары қай халықтың жерінде қаза тапты?","Қырғыз","Қалмақ","Башқұрт","Түрікмен"],
+["Кенесары көтерілісі қанша жыл созылды?","10 жылдан астам","1 жыл","3 жыл","50 жыл"],
+["Кенесарының інісі кім?","Наурызбай","Сырым","Исатай","Махамбет"],
+["Верный бекінісі қай жылы салынды?","1854","1822","1838","1864"],
+["Верный қазіргі қай қала?","Алматы","Астана","Шымкент","Қарағанды"],
+["Шымкент қай жылы алынды?","1864","1854","1822","1880"],
+["Ташкент қай жылы алынды?","1865","1854","1838","1847"],
+["«Уақытша ережелер» қай жылдары енгізілді?","1867–1868","1822–1824","1836–1838","1897–1898"],
+["Уақытша ережелер бойынша өлке неше облысқа бөлінді?","6","2","3","12"],
+["Қазақ жерін қосып алу қай ғасырда басталды?","XVIII ғасырда","XV ғасырда","XX ғасырда","XII ғасырда"],
+["Кіші жүз Ресей бодандығын қай жылы қабылдады?","1731","1822","1854","1740"],
+["1731 жылы Ресей бодандығын сұраған хан кім?","Әбілқайыр","Нұралы","Абылай","Тәуке"],
+["Әулиеата қазіргі қай қала?","Тараз","Түркістан","Қызылорда","Орал"],
+["Ақмола бекінісі қазіргі қай қала болды?","Астана","Көкшетау","Павлодар","Қостанай"],
+["Көтерілістердің маңызы неде?","Азаттық күрес рухын көтерді","Ресей кері шегінді","Хандық қайта жасалды","Шекара жабылды"]];
+var Q=Q0.concat(NW);
+var O=[["Сырым Датұлы көтерілісі қай жылы басталды?","1783"],["Сібір қазақтары туралы жарғы қай жылы қабылданды?","1822"],["Орынбор қазақтары туралы жарғы қай жылы?","1824"],["Бөкей ордасындағы көтеріліс қай жылы басталды?","1836"],["Исатай қай жылы қаза тапты?","1838"],["Кенесары қай жылы хан болып сайланды?","1841"],["Кенесары қай жылы қаза тапты?","1847"],["Верный бекінісі қай жылы салынды?","1854"]];
+document.getElementById("op").innerHTML="<h3>✍️ Қай жылы болды? Жылын жаз</h3>"+O.map(function(o,i){return'<p class="qt">'+o[0]+'</p><input class="yr" id="y'+i+'" inputmode="numeric" maxlength="4" placeholder="жыл"> <button class="btn" onclick="ck('+i+')">Тексеру</button> <b id="z'+i+'"></b>'}).join("");
+function ck(i){var ok=document.getElementById("y"+i).value.trim()==O[i][1];document.getElementById("z"+i).textContent=ok?"✅ Дұрыс!":"❌ Дұрысы: "+O[i][1];say.textContent=ok?"Жарайсың! 🎉":"Ештеңе етпейді! 💪"}
+var K=[["🛡️","Әбілқайыр хан","1693–1748 · Кіші жүз","1731 жылы Ресей бодандығын сұраған хан."],["👑","Нұралы хан","1748–1786 · Кіші жүз","Сырым Датұлы көтерілісі осы хан тұсында болды."],["🦅","Абылай хан","1711–1781 · Орта жүз","Үш жүзді біріктіріп, елді сыртқы жаудан қорғады. Кенесарының атасы."],["📯","Уәли хан","? –1819 · Орта жүз","Орта жүздің соңғы ханы; одан кейін хандық 1822 жылы жойылды."],["📜","Шерғазы хан","1812–1824 · Кіші жүз","Кіші жүздің соңғы ханы; 1824 жылы хандық жойылды."],["🏰","Жәңгір хан","1801–1845 · Бөкей ордасы","Бөкей ордасын басқарды; оған қарсы Исатай мен Махамбет көтеріліс жасады."],["🏹","Кенесары хан","1802–1847 · Орта жүз","Абылайдың немересі, 1841 жылы хан сайланған көтеріліс көсемі."]];
+document.getElementById("kg").innerHTML=K.map(function(k){return'<button class="box kc" onclick="this.classList.toggle(\'f\')"><div class="pt">'+k[0]+'</div><h3>'+k[1]+'</h3><b>'+k[2]+'</b><p>'+k[3]+'</p></button>'}).join("");
+var C=[["🐎🛡️","#ffb3b3","Жерімізді тартып алып жатыр!","1783–1797 · Сырым Датұлы көтеріліске шықты","ЖӘ!"],["📜🧐","#ffe29a","Енді хан жоқ! Жарғымен басқарамыз!","1822–1824 · хандық билік жойылды","ПАФ!"],["🔥⚔️","#d7c8ff","Жерсіз қалмаймыз! Алға!","1836–1838 · Исатай мен Махамбет","ДҮМ!"],["🏹👑","#b9f0c4","Бекіністер жетер! Дала — біздікі!","1837–1847 · Кенесары хан","ҚАНЕ!"],["🗺️🏰","#bfe3ff","Оңтүстікте жаңа бекіністер өсті...","1854–1870 жж. · қосылу аяқталды","..."]];
+document.getElementById("cm").innerHTML=C.map(function(c){return'<div class="pn" style="--b:'+c[1]+'"><span class="sx">'+c[4]+'</span><div class="bb">'+c[2]+'</div><div class="e">'+c[0]+'</div><div class="cp">'+c[3]+'</div></div>'}).join("");
+var CT=[["🐎 Сырым Датұлы","#ffb3b3",[["🏞️🐎","Жайық пен Жем бойы — біздің жайылым!","XVIII ғасыр · Кіші жүз жері","ТЫНЫШ…"],["🧔👑","Нұралы хан мен орыс әкімшілігі жерімізді қысып жатыр!","Себебі: хан зорлығы мен Ресей қысымы","ӘДІЛЕТСІЗ!"],["🗣️🛡️","Халайық, бірігейік! Мен — Сырым, басшы боламын!","1783 · көтеріліс басталды","ЖӘ!"],["🐎⚔️","Жайық шебіне шабуыл! Жайылымды қайтарамыз!","Көтеріліс Жайық пен Жем аралығында өрістеді","ДҮР!"],["⚖️👴","Хан билігін Билер кеңесі шектесін!","Сырым Билер кеңесін құруға тырысты","ТЫҢДА!"],["🌅🏜️","Көтеріліс басылды, бірақ Сырымның аты халық жадында қалды.","1797 · Хиуаға өтті, 1802 · қайтыс болды","СОҢЫ"]]],["📜 1822–24 реформасы","#ffd08a",[["🏰👑","Бұрын хан билеген, өз тәртібіміз бар еді.","Хандық жүйе","ЕРТЕ…"],["🧐📜","Мен — Сперанский! Сібірге жаңа жарғы жазамын.","1822 · Сібір қазақтары туралы жарғы","ПАФ!"],["🗺️🏢","Жер округтерге бөлінеді, орталығы — Омбы!","Орта жүзде хандық жойылды","ШЫҚ!"],["📜🏛️","Орынбор жаққа да жарғы келді!","1824 · Орынбор қазақтары туралы жарғы","ПАФ!"],["✂️🗺️","Кіші жүз үшке бөлінеді: Батыс, Орта, Шығыс!","Басында сұлтан-билеушілер тұрды","ТАҚ!"],["😠🔥","Хан жоқ, жер қолымызда емес! Бұл дұрыс емес!","Салдары: наразылық өсіп, көтерілістер басталды","ҚАЙНАЙ!"]]],["🔥 Бөкей ордасы","#d7c8ff",[["🏜️🏕️","Мен — Жәңгір хан. Орда Жайық пен Еділ арасында орналасқан.","Бөкей ордасы","ХАН"],["💰🏇","Жерді ақсүйектер мен орыс шенеуніктеріне бөлеміз!","Себебі: халық жерсіз қалды","ӘДІЛЕТСІЗ!"],["🛡️🐎","Мен — Исатай! Халық жерсіз өмір сүрмейді!","1836 · Исатай Тайманұлы көтеріліс бастады","АЛҒА!"],["🎶🗡️","Мен — Махамбет! Өлеңім де, қылышым да сенің жолыңда!","Махамбет — ақын әрі қолбасшы","ШАБ!"],["🏰🔥","Хан ордасына қарай жүр!","1837 · хан ордасына қарсы жорық","ДҮМ!"],["💔🌄","Ақбұлақта қаза таптым, бірақ күрес жалғасады...","1838, 12 шілде · Исатай қаза тапты. Махамбет 1846 жылға дейін күресті","АҚБҰЛАҚ"]]],["🏹 Кенесары","#b9f0c4",[["👑🦅","Мен — Абылай ханның немересі Кенесарымын.","Кенесары Қасымұлы (1802–1847)","СӘЛЕМ!"],["🏰🧱","Орыс бекіністері дала ішіне қарай өсіп келеді!","Себебі: бекіністердің таралуы","ҚАУІП!"],["🔥🏰","Ақмола бекінісі жалын ішінде!","1838 · Ақмолаға шабуыл","ӨРТ!"],["🐎🗺️","Торғай, Ұлытау, Көкшетау, Жетісу — бәріне барамыз!","Көтеріліс кең өріске шықты","ЖОРЫҚ!"],["👑⛺","Кенесары — хан! Ақ киізге көтердік!","1841 · хан болып сайланды","ЖАРАЙСЫҢ!"],["🏔️🕊️","Көтеріліс 10 жылдан астам созылды.","1847 · Кенесары қырғыз жерінде қаза тапты","СОҢЫ"]]],["🗺️ Қосылудың аяқталуы","#bfe3ff",[["🗺️📍","Қосылу XVIII ғасырда басталды.","1731 · Кіші жүз Ресей бодандығын қабылдады","БАСТАЛДЫ"],["🏰📍","Оңтүстікке жаңа бекіністер!","1854 · Верный (қазіргі Алматы) салынды","ТҰР!"],["⚔️🏯","Шымкент пен Әулиеата алынды!","1864 жыл","ДҮР!"],["🏙️🚩","Ташкент те қолға түсті!","1865 жыл","ПАФ!"],["📋🏛️","Өлке облыстарға бөлінеді: Жетісу, Сырдария, Ақмола, Семей, Орал, Торғай.","1867–1868 · Уақытша ережелер","ЖАРҒЫ!"],["🌊🏜️","Маңғыстау да империя құрамына енді.","1870 жылдары · қосылу аяқталды","СОҢЫ"]]]];
+var cm=document.getElementById("cm"),ct=document.createElement("div");ct.className="chips";cm.parentNode.insertBefore(ct,cm);
+function cx(i){var t=CT[i];[].forEach.call(ct.children,function(b,j){b.classList.toggle("on",j==i)});cm.innerHTML=t[2].map(function(c,k){return'<div class="pn" style="--b:'+t[1]+'"><span class="sx">'+c[3]+'</span><div class="bb">'+c[1]+'</div><div class="e">'+c[0]+'</div><div class="cp">'+(k+1)+'. '+c[2]+'</div></div>'}).join("")}
+CT.forEach(function(t,i){var b=document.createElement("button");b.className="chip";b.style.setProperty("--c",t[1]);b.textContent=t[0];b.onclick=function(){cx(i)};ct.appendChild(b)});cx(0);
+var NV=["🗺️ Карта","👑 Хандар","🎭 Комикс","🎮 Тест"],nv=document.getElementById("nv");
+NV.forEach(function(t,i){var b=document.createElement("button");b.className="chip";b.textContent=t;b.onclick=function(){go(i)};nv.appendChild(b)});
+function go(i){[].forEach.call(document.querySelectorAll(".pg"),function(p,j){p.classList.toggle("on",j==i)});[].forEach.call(nv.children,function(b,j){b.style.setProperty("--c","#d9a441");b.classList.toggle("on",j==i)});window.scrollTo(0,nv.offsetTop)}
+go(0);window.scrollTo(0,0);
+var qz=document.getElementById("qz"),n=0,sc=0;
+function shuf(a){for(var i=a.length-1;i>0;i--){var j=Math.floor(Math.random()*(i+1)),t=a[i];a[i]=a[j];a[j]=t}return a}
+function show(){
+ if(n>=Q.length)return fin();
+ var q=Q[n],o=shuf(q.slice(1).map(function(t,i){return{t:t,ok:i==0}}));
+ qz.innerHTML='<div class="bar"><i style="width:'+(n/Q.length*100)+'%"></i></div><p class="qt">'+(n+1)+'/'+Q.length+' · '+q[0]+'</p><div id="os"></div><div class="fb" id="fb"></div><button class="btn" id="nx" style="display:none">Келесі ➜</button>';
+ var os=document.getElementById("os");
+ o.forEach(function(x){var b=document.createElement("button");b.className="opt";b.textContent=x.t;b.onclick=function(){
+  [].forEach.call(os.children,function(c,k){c.disabled=true;if(o[k].ok)c.classList.add("ok")});
+  var fb=document.getElementById("fb");
+  if(x.ok){sc++;fb.textContent="🎉 Жарайсың! Дұрыс жауап!";say.textContent="Ура! Дұрыс! 🎉"}
+  else{b.classList.add("no");fb.textContent="😅 Ештеңе етпейді! Дұрыс жауап жасылмен көрсетілген.";say.textContent="Қайта көрейік! 💪"}
+  var nx=document.getElementById("nx");nx.style.display="inline-block";nx.textContent=n==Q.length-1?"Нәтиже 🏆":"Келесі ➜";nx.onclick=function(){n++;show()};nx.focus()};os.appendChild(b)});
+}
+function boom(){for(var i=0;i<34;i++){var s=document.createElement("span");s.className="cf";s.textContent=["🎉","⭐","🏆","🐎","✨"][i%5];s.style.left=Math.random()*100+"vw";s.style.animationDelay=Math.random()*.8+"s";document.body.appendChild(s);setTimeout(function(e){e.remove()},3800,s)}}
+function fin(){
+ var r=sc>=45?["🏆","Тарихшы батыр!"]:sc>=30?["🌟","Жақсы нәтиже!"]:["📚","Тағы бір рет оқып шық!"];
+ qz.innerHTML='<div class="res"><div class="big">'+r[0]+'</div><h3>'+r[1]+'</h3><p class="qt">'+sc+' / '+Q.length+'</p><button class="btn" id="rs">🔄 Қайта бастау</button></div>';
+ say.textContent=sc>=30?"Сен — жұлдызсың! ⭐":"Картаны қайта қарап шық!";
+ if(sc>=30)boom();
+ document.getElementById("rs").onclick=function(){n=0;sc=0;show()};
+}
+show();
+</script>
+</body></html>
